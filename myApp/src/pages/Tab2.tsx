@@ -9,15 +9,15 @@ const Tab2: React.FC = () => {
     const [showAlert] = useIonAlert();
     
     const [supported, isSupported] = useState<boolean>(false);
+    const [barcodeButtonDisabled, isBarcodeButtonDisabled] = useState<boolean>(false);
 
     useIonViewWillEnter(async () => {
-        // const var2 = await isBarcodeScanner();
-
         try {
             const barcodeScannerSupported = await BarcodeScanner.isSupported();
             isSupported(barcodeScannerSupported.supported);
         } catch (error) {
-            console.log("that failed", error);
+            isSupported(false);
+            isBarcodeButtonDisabled(true);
             let message
             if (error instanceof Error) message = error.message
             else message = String(error)
@@ -45,16 +45,6 @@ const Tab2: React.FC = () => {
         // });
         console.log("supported: ", supported);
     });
-
-    const isBarcodeScanner = async () => {
-        try {
-            const tralala = await BarcodeScanner.isSupported();
-            const nn = tralala.supported
-        } catch (e) {
-            console.log("that failed", e)
-        }
-        return "nn";
-    }
 
     // const requestPermissions = async () => {
     //     const { camera } = await BarcodeScanner.requestPermissions();
@@ -89,7 +79,7 @@ const Tab2: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
-                <IonButton expand="full">Take Barcode</IonButton>
+                <IonButton expand="full" disabled={barcodeButtonDisabled}>Take Barcode</IonButton>
 
                 <IonList>
                     <IonItem>
