@@ -1,6 +1,10 @@
 # devcontainer-demo
 Demo for devcontainers
 
+Based on:
+
+* https://www.youtube.com/watch?v=K7ghUiXLef8&t=117s
+
 ## Starup 
     $ npm i -g @ionic/cli
     $ ionic start myApp blank --type react
