@@ -3,7 +3,7 @@ import React from 'react';
 import Tab1 from './Tab1';
 import { Redirect, Route } from 'react-router';
 import Tab2 from './Tab2';
-import { ellipse, triangle } from 'ionicons/icons';
+import { barcodeOutline, ellipse, imageOutline, triangle } from 'ionicons/icons';
 
 const Settings: React.FC = () => {
 
@@ -11,11 +11,11 @@ const Settings: React.FC = () => {
         <IonTabs>
             <IonTabBar slot="bottom">
                 <IonTabButton tab="tab1" href="/app/settings/tab1">
-                    <IonIcon icon={triangle} />
+                    <IonIcon icon={imageOutline} />
                     <IonLabel>Tab 1</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="tab2" href="/app/settings/tab2">
-                    <IonIcon icon={ellipse} />
+                    <IonIcon icon={barcodeOutline} />
                     <IonLabel>Tab 2</IonLabel>
                 </IonTabButton>
             </IonTabBar>
