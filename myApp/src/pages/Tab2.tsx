@@ -11,19 +11,50 @@ const Tab2: React.FC = () => {
     const [supported, isSupported] = useState<boolean>(false);
 
     useIonViewWillEnter(async () => {
-        BarcodeScanner.isSupported().then((result) => {
-             isSupported(result.supported);
-        }).catch((error) => {
+        // const var2 = await isBarcodeScanner();
+
+        try {
+            const barcodeScannerSupported = await BarcodeScanner.isSupported();
+            isSupported(barcodeScannerSupported.supported);
+        } catch (error) {
+            console.log("that failed", error);
+            let message
+            if (error instanceof Error) message = error.message
+            else message = String(error)
             showAlert({
                 header: 'Error!',
-                message: error,
+                message: message,
                 buttons: [
                     { text: 'Cancel', role: 'cancel'}
                 ]
-            })
-        });
+             })
+        }
+        
+
+        // const isSupportedBoolean = await BarcodeScanner.isSupported();
+        // BarcodeScanner.isSupported().then((result) => {
+        //      isSupported(result.supported);
+        // }).catch((error) => {
+        //     showAlert({
+        //         header: 'Error!',
+        //         message: error,
+        //         buttons: [
+        //             { text: 'Cancel', role: 'cancel'}
+        //         ]
+        //     })
+        // });
         console.log("supported: ", supported);
     });
+
+    const isBarcodeScanner = async () => {
+        try {
+            const tralala = await BarcodeScanner.isSupported();
+            const nn = tralala.supported
+        } catch (e) {
+            console.log("that failed", e)
+        }
+        return "nn";
+    }
 
     // const requestPermissions = async () => {
     //     const { camera } = await BarcodeScanner.requestPermissions();
