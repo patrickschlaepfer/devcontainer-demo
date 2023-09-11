@@ -11,9 +11,9 @@ interface ContainerProps {
     onFinish: () => void;
 }
 
-const SwiperButtonNext = ({ childern }: any) => {
+const SwiperButtonNext = ({ children }: any) => {
     const swiper = useSwiper();
-    return <IonButton onClick={() => swiper.slideNext()}>{childern}</IonButton>;
+    return <IonButton onClick={() => swiper.slideNext()}>{children}</IonButton>;
 };
 
 const Intro: React.FC<ContainerProps> = ({ onFinish }) => {
